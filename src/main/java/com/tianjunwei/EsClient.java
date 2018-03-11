@@ -19,14 +19,19 @@ public class EsClient {
    public static void main(String [] args) throws IOException{
 	   TransportClient client = client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddresses(new TransportAddress(InetAddress.getByName("localhost"),port));
 	   IndexResponse response = client.prepareIndex("msg", "tweet", "1").setSource(XContentFactory.jsonBuilder()
-               .startObject().field("userName", "张三")
+               .startObject().field("userName", "张三1")
                .field("sendDate", new Date())
-               .field("msg", "msg")
+               .field("msg", "msg1")
                .endObject()).get();
 	   IndexResponse response2 = client.prepareIndex("msg", "tweet", "2").setSource(XContentFactory.jsonBuilder()
-               .startObject().field("userName", "张三")
+               .startObject().field("userName", "张三2")
                .field("sendDate", new Date())
-               .field("msg", "msg")
+               .field("msg", "msg2")
+               .endObject()).get();
+	   IndexResponse response3 = client.prepareIndex("msg", "tweet", "3").setSource(XContentFactory.jsonBuilder()
+               .startObject().field("userName", "张三3")
+               .field("sendDate", new Date())
+               .field("msg", "msg3")
                .endObject()).get();
 	 /*  String jsonStr = "{\"name\":\"tom zhang\",\"age\":19}";
 	   IndexResponse responseJson = client.prepareIndex("msg", "tweet", "1").setSource(jsonStr).get();*/
