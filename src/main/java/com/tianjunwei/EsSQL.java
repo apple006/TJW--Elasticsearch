@@ -38,7 +38,7 @@ public class EsSQL {
 		        .createDataSource(properties);
 		dds.setInitialSize(1);
 		Connection connection = dds.getConnection();
-		String sql2 = "select * FROM msg";
+		String sql2 = "select * FROM index";
 		PreparedStatement ps = connection.prepareStatement(sql2);
 		ResultSet set=ps.executeQuery();
 
@@ -51,7 +51,7 @@ public class EsSQL {
 		 System.err.println(data.getColumnCount());
 		 while (set.next()) {
 			    //sql¶ÔÓ¦Êä³ö
-			    System.out.println(set.getString("userName")+set.getString("msg") );
+			    System.out.println(set.getString("key") );
 
 			}
 
