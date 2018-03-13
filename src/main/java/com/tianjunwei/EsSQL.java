@@ -38,7 +38,7 @@ public class EsSQL {
 		        .createDataSource(properties);
 		dds.setInitialSize(1);
 		Connection connection = dds.getConnection();
-		String sql2 = "select * FROM index";
+		String sql2 = "select * FROM index where key='values'";
 		PreparedStatement ps = connection.prepareStatement(sql2);
 		ResultSet set=ps.executeQuery();
 
