@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Date;
 
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -35,6 +36,8 @@ public class EsClient {
                .endObject()).get();
 	 /*  String jsonStr = "{\"name\":\"tom zhang\",\"age\":19}";
 	   IndexResponse responseJson = client.prepareIndex("msg", "tweet", "1").setSource(jsonStr).get();*/
+	   DeleteResponse dResponse = client.prepareDelete("msg", "tweet", "1").execute().actionGet();
+	   System.err.println(dResponse.getResult().getLowercase());
 	   GetResponse getResponse = client.prepareGet("msg", "tweet", "1").get();
 	   System.err.println(getResponse.getSourceAsString());
    }
